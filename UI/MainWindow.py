@@ -8,6 +8,10 @@ from tkinter import filedialog
 import os
 import shutil
 
+# Directory path to root:
+import sys
+sys.path.append("/FilePathToTheRootFolderOfProject")
+
 # Function for adding empty lines:
 def emptyline(root):
     empty_space = ttk.Label(root, text='')
@@ -15,22 +19,21 @@ def emptyline(root):
 
 
 # Function to handle file selection:
-    # Saves it to a new folder, "User Images"
 def add_file():
     file_path = filedialog.askopenfilename(title="Select a file")
     if file_path:
         print(f"Selected file: {file_path}")
-        # Get the filename and extension:
-        file_name = os.path.basename(file_path)
-        # Create the "User Images" folder if it doesn't exist:
-        user_images_folder = "User Images"
-        os.makedirs(user_images_folder, exist_ok=True)
-        # Construct the destination path in the "User Images" folder:
-        destination_path = os.path.join(user_images_folder, file_name)
-        # Copy the selected file to the "User Images" folder:
-        shutil.copy2(file_path, destination_path)
-        print(f"Image saved to: {destination_path}")
-            # If an image exists in the folder with the same name, it gets replaced.
+
+        # Open the image using PIL:
+        pil_image = Image.open(file_path)
+
+        # Convert the PIL image to NumPy array:
+        image_array = np.array(pil_image)
+
+        # Extract dominant colors using ColorExtractor.py:
+        dominant_colors = extractDominantColors(image_array, num_colors=5)
+        print("Dominant Colors: ")
+        print(dominant_colors)
 
 
 # Create a canvas object:
@@ -49,7 +52,7 @@ canvas.create_text(250, 200, text='"GRADIATOR"', fill="black", font=('Helvetica 
 
 # Loading an image:
 image = tk.PhotoImage(
-    file="/YourFilePathTo/vaporwaveFlower.png")
+    file="/TheFilePathTo/vaporwaveFlower.png")
 # Resize the image (subsample by a factor of 4 in both dimensions):
 smaller_image = image.subsample(4, 4)
 # Display the resized image:
@@ -65,3 +68,16 @@ canvas.pack()
 
 # Run's the program's main loop:
 tk.mainloop()
+
+
+'''
+SAMPLE OUTPUT:
+________________
+Dominant Colors: 
+[[171  86 227]
+ [  0   0   0]
+ [ 42 161 246]
+ [ 27   6 129]
+ [211 196 207]]
+________________
+'''
