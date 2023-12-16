@@ -24,3 +24,10 @@ Gradiator Program layout:
 - Finished Works - (Folder to store program-generated images for viewing)
 
 <img width="25%" src="https://i.imgur.com/529kcW3.png" align="left" />
+
+
+Libraries used:
+- NumPy - For numerical operations and array handling.
+- OpenCV - For image processing (computer vision tasks).
+- scikit-learn - For machine learning algorithms (such as KMeans clustering).
+- Pillow (PIL) - For Image processing (basic image handling).
