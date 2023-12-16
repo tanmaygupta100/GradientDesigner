@@ -23,8 +23,7 @@ Gradiator Program layout:
 - main.py  -  (Entry point of program, organizing collaboration between the different modules, running the main event loop)
 - Finished Works - (Folder to store program-generated images for viewing)
 
-<img width="25%" src="https://i.imgur.com/529kcW3.png" align="left" />
-
+<img width="25%" src="https://i.imgur.com/529kcW3.png" />
 
 Libraries used:
 - NumPy - For numerical operations and array handling.
