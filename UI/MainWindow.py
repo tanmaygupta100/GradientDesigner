@@ -1,22 +1,31 @@
 # MainWindow.py inside the "UI" folder
-    # Meant to be the core user-interface for inserting images and saving the the "User Images" folder for further analysis.
-
-import tkinter as tk
-from tkinter import *
-from tkinter import ttk
-from tkinter import filedialog
-import os
-import shutil
+# Meant to be the core user-interface for inserting images and saving the "User Images" folder for further analysis.
 
 # Directory path to root:
 import sys
-sys.path.append("/FilePathToTheRootFolderOfProject")
+sys.path.append("/Users/tanmaygupta/Desktop/Image Art Processor")
 
-# Function for adding empty lines:
-def emptyline(root):
-    empty_space = ttk.Label(root, text='')
-    empty_space.pack()
+import tkinter as tk
+from tkinter import *
+from tkinter import filedialog
+from PIL import Image
+import numpy as np
+from ImageProcessing.ColorExtractor import extractDominantColors
 
+
+# Function to read color values from the text file
+def read_color_values():
+    with open('color_values.txt', 'r') as file:
+        lines = file.readlines()
+
+    # Assign colors to variables
+    color1 = list(map(int, lines[0].strip().split(',')))
+    color2 = list(map(int, lines[1].strip().split(',')))
+    color3 = list(map(int, lines[2].strip().split(',')))
+    color4 = list(map(int, lines[3].strip().split(',')))
+    color5 = list(map(int, lines[4].strip().split(',')))
+
+    return color1, color2, color3, color4, color5
 
 # Function to handle file selection:
 def add_file():
@@ -32,12 +41,25 @@ def add_file():
 
         # Extract dominant colors using ColorExtractor.py:
         dominant_colors = extractDominantColors(image_array, num_colors=5)
-        print("Dominant Colors: ")
-        print(dominant_colors)
 
+        # Write the dominant colors to a text file
+        with open('color_values.txt', 'w') as file:
+            for color in dominant_colors:
+                file.write(','.join(map(str, color)) + '\n')
+
+        # Call PerlinNoiseGenerator to generate the image
+        generate_perlin_image()
+
+# Function to call PerlinNoiseGenerator and generate the image
+def generate_perlin_image():
+    # Import PerlinNoiseGenerator
+    from ImageProcessing.PerlinNoiseGenerator import generate_perlin_image
+
+    # Call the function to generate the image
+    generate_perlin_image()
 
 # Create a canvas object:
-canvas= tk.Canvas(width= 500, height= 500, bg="SteelBlue3")
+canvas = tk.Canvas(width=500, height=500, bg="SteelBlue3")
 
 # Add a text in Canvas:
 canvas.create_text(49, 25, text="Make art", fill="black", font=('Helvetica 17 bold'))
@@ -52,7 +74,7 @@ canvas.create_text(250, 200, text='"GRADIATOR"', fill="black", font=('Helvetica 
 
 # Loading an image:
 image = tk.PhotoImage(
-    file="/TheFilePathTo/vaporwaveFlower.png")
+    file="/Users/tanmaygupta/Desktop/Image Art Processor/vaporwaveFlower.png")
 # Resize the image (subsample by a factor of 4 in both dimensions):
 smaller_image = image.subsample(4, 4)
 # Display the resized image:
@@ -60,13 +82,12 @@ canvas.create_image(375, 375, anchor=tk.NW, image=smaller_image)
 
 # Add a button to add a file:
 add_file_button = tk.Button(
-    canvas, text="Transform your image", command=add_file, fg="black", highlightbackground="SteelBlue2", height = 2, width = 14)
+    canvas, text="Transform your image", command=add_file, fg="black", highlightbackground="SteelBlue2", height=2, width=14)
 button_window = canvas.create_window(170, 400, anchor=tk.NW, window=add_file_button)
 
 canvas.pack()
 
-
-# Run's the program's main loop:
+# Run the program's main loop:
 tk.mainloop()
 
 
