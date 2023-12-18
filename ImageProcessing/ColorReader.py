@@ -2,7 +2,7 @@
 
 # Directory path to root:
 import sys
-sys.path.append("/Users/tanmaygupta/Desktop/Image Art Processor")
+sys.path.append("/YourFilePath/ToTheRootFolder")
 
 
 # Assuming the ColorExtractor.py is in the same directory
