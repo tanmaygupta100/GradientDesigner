@@ -1,7 +1,6 @@
 # ColorExtractor.py
     # Holds the extractDominantColors function, to be called by MainWindow.py
 
-import numpy as np
 from sklearn.cluster import KMeans
 
 def extractDominantColors(image, num_colors = 5):
