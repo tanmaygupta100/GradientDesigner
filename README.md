@@ -1,7 +1,7 @@
 # GradientDesigner
-New project in progress! Transform your pictures into gradient artworks! Welcome to the "Gradiator"...
+Transform your pictures into abstract artworks! Welcome to the "Gradiator"...
 
-This project uses image processing and graphics programming techniques with algorithmically-designed Perlin Noise to create gradient artworks. Allows users to upload images, then extracts dominant colors, generates gradient artwork, and applies a generated heat-map layout for fantastic artworks.
+This project uses image processing and graphics programming techniques with a Perlin Noise algorithm to create heat-map designs and gradient artwork. Allows users to upload images, from which the dominant colors are extracted and used to create art.
 
 
 Home screen and test-input image:
@@ -40,13 +40,7 @@ Gradiator Program layout:
   - PerlinNoiseGenerator.py  -  (Generates Perlin noise patterns for the heat map design, as well as creates a gradient design, based on the RGB text)
 - color_values.txt  -  (Initially written by ColorExtractor.py, then rewritten by ColorReader.py)
 
-
-Libraries used:
-- NumPy - For numerical operations and array handling.
-- OpenCV - For image processing (computer vision tasks).
-- scikit-learn - For machine learning algorithms (such as KMeans clustering).
-- Pillow (PIL) - For Image processing (basic image handling).
-
+<br/>
 
 Tested Progress of testing rendering techniques:
 
@@ -66,3 +60,11 @@ Phase 5.4: Finalizing the code and increasing output time-efficiency and costlin
     <img width="30%" src="https://i.imgur.com/3nzDqV6.png" />
     <img width="30%" src="https://i.imgur.com/adM7zyQ.png" />
 </div>
+
+<br/>
+
+Libraries used:
+- NumPy - For numerical operations and array handling.
+- OpenCV - For image processing (computer vision tasks).
+- scikit-learn - For machine learning algorithms (such as KMeans clustering).
+- Pillow (PIL) - For Image processing (basic image handling).
