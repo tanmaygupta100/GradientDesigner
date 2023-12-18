@@ -3,7 +3,7 @@
 
 # Directory path to root:
 import sys
-sys.path.append("/Users/tanmaygupta/Desktop/Image Art Processor")
+sys.path.append("/YourFilePath/ToTheRootFolder")
 
 import tkinter as tk
 from tkinter import *
@@ -74,7 +74,7 @@ canvas.create_text(250, 200, text='"GRADIATOR"', fill="black", font=('Helvetica 
 
 # Loading an image:
 image = tk.PhotoImage(
-    file="/Users/tanmaygupta/Desktop/Image Art Processor/vaporwaveFlower.png")
+    file="/YourFilePath/ToYour/Image.png")
 # Resize the image (subsample by a factor of 4 in both dimensions):
 smaller_image = image.subsample(4, 4)
 # Display the resized image:
