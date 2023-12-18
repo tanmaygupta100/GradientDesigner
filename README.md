@@ -3,30 +3,66 @@ New project in progress! Transform your pictures into gradient artworks! Welcome
 
 This project uses image processing and graphics programming techniques with algorithmically-designed Perlin Noise to create gradient artworks. Allows users to upload images, then extracts dominant colors, generates gradient artwork, and applies a generated heat-map layout for fantastic artworks.
 
+
+Home screen and test-input image:
+
+<div style="display: flex; justify-content: space-between;">
+    <img width="30%" src="https://i.imgur.com/529kcW3.png" />
+    <img width="30%" src="https://i.imgur.com/uwvF9y6.png" />
+</div>
+
+<br/>
+
+Outputs (Perlin heat-map and gradient art):
+
+<div style="display: flex; justify-content: space-between;">
+    <img width="30%" src="https://i.imgur.com/Y755ckp.png" />
+    <img width="30%" src="https://i.imgur.com/n6twBLT.png" />
+</div>
+
+<br/>
+
+
 Project Phases:
 - Phase 1: Complete the UI design and logic.
-- Phase 2: Working on the image processing and color extractions.
-- Phase 3: Designing the Perlin Noise Algorithm.
-- Phase 4: Rendering artworks and outputting.
-- Phase 5: Final design work on UI and outputs.
+- Phase 2: Work on the color extractions into text file.
+- Phase 3: Design the Perlin Noise Algorithm.
+- Phase 4: Unite all the programs to work in tandem.
+- Phase 5: Final design work in testing rendered artworks to output.
 
 
 Gradiator Program layout:
 - UI
   - MainWindow.py  -  (Manages the main application window, user interactions, and file selection)
 - ImageProcessing
-  - colorExtractor.py  -  (Extracts the 5 most dominant colors from an image)
-  - perlinNoiseGenerator.py  -  (Generates Perlin/Simplex noise patterns to serve as the base for the heat map designs)
-- Rendering
-  - gradientBlending.py  -  (Handles the gradienting, blending, or blurring of the Perlin noise pattern, creating the final artwork)
-- User Images  -  (Folder to store user-uploaded images for processing)
-- main.py  -  (Entry point of program, organizing collaboration between the different modules, running the main event loop)
-- Finished Works - (Folder to store program-generated images for viewing)
+  - ColorExtractor.py  -  (Extracts the 5 most dominant colors from an image and saves the RGB values to a text file)
+  - ColorReader.py  -  (Converts human-friendly RGB values (from ColorExtractor.py) to computer-friendly RGB values (for PerlinNosieGenerator.py))
+  - PerlinNoiseGenerator.py  -  (Generates Perlin noise patterns for the heat map design, as well as creates a gradient design, based on the RGB text)
+- color_values.txt  -  (Initially written by ColorExtractor.py, then rewritten by ColorReader.py)
 
-<img width="25%" src="https://i.imgur.com/529kcW3.png" />
 
 Libraries used:
 - NumPy - For numerical operations and array handling.
 - OpenCV - For image processing (computer vision tasks).
 - scikit-learn - For machine learning algorithms (such as KMeans clustering).
 - Pillow (PIL) - For Image processing (basic image handling).
+
+
+Tested Progress of testing rendering techniques:
+
+Phases 5.1, 5.2, & 5.3 of testing: Refining the brush strokes, color selections, and design complexity
+
+<div style="display: flex; justify-content: space-between;">
+    <img width="30%" src="https://i.imgur.com/Pb6RC0C.png" />
+    <img width="30%" src="https://i.imgur.com/SC9lOGK.png" />
+    <img width="30%" src="https://i.imgur.com/Wl711FW.png" />
+</div>
+
+<br/>
+
+Phase 5.4: Finalizing the code and increasing output time-efficiency and costliness
+
+<div style="display: flex; justify-content: space-between;">
+    <img width="30%" src="https://i.imgur.com/3nzDqV6.png" />
+    <img width="30%" src="https://i.imgur.com/adM7zyQ.png" />
+</div>
