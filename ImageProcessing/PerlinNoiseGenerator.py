@@ -77,14 +77,14 @@ def generate_perlin_image():
     # Assign colors based on the Perlin noise values
     color_world = add_color(enlarged_world)
 
-
+    # Convert the array to a Perlin heat-map image and display it
     Image.fromarray(np.uint8(color_world)).show()
 
     # Apply Gaussian blur to the color world
     sigma = 25.0  # Adjust the sigma parameter for different blur intensity
     blurred_color_world = gaussian_filter(color_world, sigma=(sigma, sigma, 0))
 
-    # Convert the array to an image and display it
+    # Convert the array to a gradient image and display it
     Image.fromarray(np.uint8(blurred_color_world)).show()
     
 
